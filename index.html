@@ -13,7 +13,7 @@
       <div id="top-box">
           <h1>Boglarka Csomos</h1>
           <p><span>Web Designer and Front End Web Developer</span> with a strong background in cartography — or in other words, an expertise of communicating visually very complex information to any kinds of audience regardless of abilities and existing knowledge.</p>
-          <p>Currently focusing on enriching pages in online courses for a more engaging experience for the users. This means planning and creating interactive widgets while ensuring a high level of accessibility.</p>
+          <p>Currently focusing on enriching pages in online courses for a more engaging experience for the users. This means planning and creating interactive modules while ensuring a high level of accessibility.</p>
           <div id="link-container">
             <span><a href="csomosbo@gmail.com">csomosbo@gmail.com</a></span>
             <span><a href="https://github.com/csomosb/snippets">github</a></span>
@@ -29,7 +29,7 @@
               <p>Oxford University, Department for Continuing Education</p>
               <p>Oxford, United Kingdom</p>
               <p>June 2020 – current</p>
-              <p>In this position my main focus is the design of interfaces, interactives and media for our online university courses. I am also responsible for front end development, especially in terms of the interactive widgets I create.</p>
+              <p>In this position my main focus is the design of interfaces, interactives and media for our online university courses. I am also responsible for front end development, especially in terms of the interactive modules I create.</p>
               <p>Adobe suit (Illustrator, Photoshop, XD), html, css (sass), javascript</p>
             </section>
             <section class="small-sections">
@@ -62,8 +62,13 @@
         <section class="main-sections">
           <section class="sub-sections">
           <h1>Projects</h1>
-          <section class="main-sections-flex">
-            <section class="small-sections">
+          <section class="">
+            <p>In my current role as a Front End Developer I play a key role in the production of new online courses in arrange of academic disciplines. I work collaboratively with project managers, academic subject specialists, pedagogy experts, and other digital creatives to design and produce new learning experiences. I need to think imaginatively about the ideas expressed by authors and academics to translate those ideas into a working product.</p>
+            <p>Anything I make has to match the existing in-house style guide and apply it appropriately. Investigating new online tools and services is among my core responsibilities as part of our learning design process.</p>
+            <p>I am tasked with preparing image assets to acceptable standards which often involves editing those with Photoshop, a software I am experienced using alongside other Adobe components like Illustrator or XD. I undertake picture research to identify images to illustrate courses collaboratively with other team members.</p>
+            <p>I devise appropriate digital solutions to enable effective online learning, observe best practice in terms of user experience, accessibility, and web standards.</p>
+            <p>I need to prepare assets such as images, new UI elements, and documents. I add to the existing style guide by exploring better options and after throughout testing implementing those in the code base.</p>
+            <!-- <section class="small-sections">
               <h2>Day-to-day development tasks</h2>
               <p>Quality assurance amends on course pages.</p>
               <p>Bug fixes in courses.</p>
@@ -73,97 +78,96 @@
               <h2>Day-to-day design tasks</h2>
               <p>Image research. Finding the most appropriate images for the pages to tell a story and engage the students.</p>
               <p>Photo editing. This ranges from simple cropping and resizing to completely altering images with various tools in Photoshop.</p>
-            </section>
+            </section> -->
           </section>
         </section>
         <section class="sub-sections">
           <h2>Interactives</h2>
-          <p>The primary focus of my role is building interactive content on the course pages. This includes the typical interactives in educational contexts such as drag-and-drop, expandable items, charts, flashcards, etc. Instead of using an existing service for this we decided to make our own to guarantee proper style integration with the rest of the course content.</p>
+          <p>My specialisation in this post is creating interactive activities such as drag-and-drop exercises, interactive maps, and simple games. All of these have to match accessibility requirements and also have to be able to easily and comfortable operated on all browsers and screen sizes.</p>
           <p>Outside of these I also design and develop smaller, more unusual interactives that give life to the pages.</p>
 
           <section id="random-num-example">
-          <style>
-            @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&amp;display=swap');
-            #random-num-container { margin: 2rem auto; width:12rem; }
-            /* #wordButton { width: 3.5rem; height: 3.5rem; margin-left:0.5rem; background: #b7b2ad; border-radius: 1rem; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.45); padding: 0.5rem; } */
-            /* #wordButton { width: 9rem; margin-left: 1.5rem; border: none; border-radius: 2px; padding: 0.5rem; color: #f4eae1; background: #2d2d2d; font-size: 1.2rem; display: flex; align-items: center; justify-content: space-around; } */
-            #wordButton { text-shadow: 1px 1px 0px #fdffff, -1px -1px 0 #aaa; background: #cccac7; width: 9rem; margin-left: 1.5rem; border-radius: 1rem; padding: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; justify-content: space-around; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.45); }
-            #wordButton:disabled { color: #8e8e8e; }
-            .numbersDone { color:#c63b3b !important; text-shadow: 1px 1px 0px #eac6c6, 0 0 20px #c63b3b !important; }
-            #num-container-div { height: 6rem; width: 12rem; border-radius: 11px; background-color: #353535; color:#fafaf4; font-size: 5.8rem; font-family: 'Source Sans Pro', sans-serif; margin-bottom: 1rem; text-align: center; font-weight: bold; line-height: 1 !important;}
-            .circle { height: 1rem; width: 1rem; border-radius: 50%; }
-            .circleOff { background: #626161; border: 2px #c63b3b solid; pointer:cursor; box-shadow: 1px 1px 1px #fdffff, -1px -1px 0 #aaa; }
-            .circleOn { background: #f0d7d7; border: 1px #c63b3b solid; box-shadow: 0 0 10px 2px #c63b3b !important; }
-          </style>
-          <div id="random-num-container">
-
-            <div id="num-container-div"><span id="num-container"></span></div>
-            <button type="button" name="button" id="wordButton" onclick="randomStart()"><div class="circle circleOff" id="circle"></div>Randomise</button>
-            <script>
-            function randomStart() {
-                ranInterval=setInterval(randomNum,20)
-              }
-
-              function randomNum() {
-                var x=document.getElementById("num-container");
-                var wordBtn = document.getElementById("wordButton");
-                var circle = document.getElementById("circle");
-                x.innerHTML=Math.floor((Math.random()*300)+100);
-                document.getElementById("wordButton").disabled = true;
-                setTimeout(randomStop,1200);
-              }
-
-              function randomStop() {
-                clearInterval(ranInterval);
-                wordButton.classList.add("numbersDone");
-                circle.classList.add("circleOn");
-                circle.classList.remove("circleOff");
-              }
-            </script>
-          </div>
-        </section>
+            <div id="random-num-container">
+              <div id="num-container-div"><span id="num-container"></span></div>
+              <button type="button" name="button" id="wordButton" onclick="randomStart()"><div class="circle circleOff" id="circle"></div>Randomise</button>
+            </div>
+          </section>
 
         </section>
         <section class="sub-sections">
           <h2>New styles</h2>
           <p>Part of my job is creating new assets to use on our course pages. These are reusable objects that can fit a variety of contexts. I design the look and feel and then write the html, css and sometimes javascript for the element. Later they are added to our main style theme for easy usage.</p>
-          <div class="example-container">
-            <img src="img/table_style_1.PNG" width="300px" alt="Design concept for tables">
-            <p class="caption">Design concept for tables.</p>
-            <img src="img/invoice_og.gif" width="250px" alt="Table with old design that needs to be updated">
-            <p class="caption">Outdated table from one of our courses.</p>
-            <img src="img/invoice_design.PNG" width="400px" alt="Same table as before but with a new design based on the concept">
-            <p class="caption">Using the design concept I remade the old table in a more pleasing style.</p>
+          <div class="gallery-container">
+            <div class="gallery-slides fade">
+              <img src="img/table_style_1.PNG" height="400px" alt="Design concept for tables">
+              <p class="caption">Design concept for tables.<br/>1 / 3</p>
+            </div>
+            <div class="gallery-slides fade">
+              <img src="img/invoice_og.gif" height="400px" alt="Table with old design that needs to be updated">
+              <p class="caption">Outdated table from one of our courses.<br/>2 / 3</p>
+            </div>
+            <div class="gallery-slides fade">
+              <img src="img/invoice_design.PNG" height="400px" alt="Same table as before but with a new design based on the concept">
+              <p class="caption">Using the design concept I remade the old table in a more pleasing style.<br/>3 /3</p>
+            </div>
+            <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
           </div>
         </section>
         <section class="sub-sections">
           <h2>Style guide</h2>
-          <p>The department is running a longer course in Computer Science with graphics that were in dire need of redrawing. Various different graphs and models were once made with minimal design considerations and tables left with their default html look needed to be made modern but timeless enough to be aesthetically pleasing in the next couple of years while also communicating everything they have originally shown.</p>
-          <p>For this I went through an in-depth design process. At first I didn’t have much understanding of the graphs – I’ve seen some of it during my university studies but I had no real idea of what they were supposed to show. So as a first step I had to do research.</p>
-          <p>I have read the course and also looked up the figures described on other sources. As I grew to understand them I knew I had to collect the images in categories visually. In an office this could have meant printing off the images and putting them on a whiteboard but as my entire team has been working from home I came up with an idea. I created a Trello board and added columns for each identified figure type.</p>
-          <img src="img/style-guide-trello-1.PNG" width="600px" alt="Screenshot of the Trello board">
-          <p>I have also added Guide Notes detailing all specific requirements in terms of symbology for the individual types.</p>
-          <p>After this phase I started looking at examples for these sort of images, however I found that outside of a small handful of paid services people tend to opt for very minimalistic designs, often generated by computer science related software. This meant I had to come up with my own design without existing references. I have iterated a couple of different ideas with Adobe Illustrator.</p>
-          <img src="img/graphs_iteration3.PNG" width="600px" alt="Screenshot of Adobe Illustartor: Design iteration">
-          <p>The ones my team liked the most I have added to a sample page to see how they work in their destination. After deciding on the best I made a Style Guide.</p>
-          <p>The aim of this Style Guide was to let other team member create the new figures too. I collected all of the assets and rules into a Google Presentation.</p>
-          <img src="img/style-guide-doc.PNG" width="800px" alt="Screenshot of the style guide">
-          <p>Etc</p>
-          <p>I made new designs for tables as well. With this the goal was a bit larger – the new designs would be incorporated into all of our courses, or rather our main theme. For this I made a couple of designs using references. The main principle I had in mind was that less is more, that we don’t really need all of those dark borders to make sense out of what’s being shown. etc</p>
+          <p>The academic courses my department is responsible for require regular updates to ensure they are fully up-to-date in terms of educational value. One of my major projects revolved around this principle: I was tasked with creating a new style guide for recreating the various graphics in a major computer science course.</p>
+          <p>These were highly technical illustrations that were originally made without design considerations which was acceptable at the time but I had to elevate them to meet higher expectations with a modern yet timeless, aesthetically pleasing manner while communicating all of the necessary information they have originally shown.</p>
+          <p>The first step to this goal was to gain an understanding of the graphs. I conducted throughout research of the various graphs used in computer science. As I made a Trello board to categories the various graph and model types as a visual aid for progressing with the design, with guide notes detailing specific technical requirements for the individual types.</p>
+          <p>After research I made a couple of design to iterate on the test course pages and see what works best for our purposes. Once the design was finalised I created a Style Guide. This was used by the design team to create the new assets.</p>
+          <div class="gallery-container">
+            <div class="gallery-slides-2 fade">
+              <img src="img/style-guide-trello-1.PNG" height="400px" alt="Screenshot of the Trello board">
+              <p class="caption">Trello board with image catergories prepared during the research phase.<br/>1 / 3</p>
+            </div>
+            <div class="gallery-slides-2 fade">
+              <img src="img/graphs_iteration3.PNG" height="400px" alt="Screenshot of Adobe Illustartor: Design iteration">
+              <p class="caption">Design iteration of a sample graph in Adobe Illustrator.<br/>2 / 3</p>
+            </div>
+            <div class="gallery-slides-2 fade">
+              <img src="img/style-guide-doc.PNG" height="400px" alt="Screenshot of the style guide">
+              <p class="caption">Style Guide for the new images.<br/>3 /3</p>
+            </div>
+            <a class="prev" onclick="plusSlides(-1,1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1,1)">&#10095;</a>
+          </div>
+        </section>
+        <section class="sub-sections">
+          <h2>Working with APIs</h2>
+          <p>I am familiar with building projects around APIs both from my current job and my university studies.</p>
+          <p>An example from my live projects is this waveform interactive. The goal was to have the users listen to an audio file and add markers based on a specific criteria. Once the task was finished they were asked to generate screenshots to share on the course's forum as part of the exercise.</p>
+          <p>During my university studies I specialised in web development with a cartographic context which mostly means interactive maps. This relied on using various map APIs such as Leaflet.js or the Google Maps API.</p>
+          <div class="centre">
+            <img src="img/waveform.PNG" height="400px" alt="Screenshot of interactive using APIs">
+          </div>
+          <p class="caption">Example of an interactive module built on APIs.</p>
         </section>
         <section class="sub-sections">
           <h2>Accessibility</h2>
-          <p>Our mission is to ensure everybody regardless of abilities can have the equal level of learning opportunity from our courses without missing out on anything. In order to achieve this I needed to ensure that our interactives support a high level of accessibility and can be navigated without a mouse, are not reliant on colour only and have appropriate labels set up for screen readers.</p>
-          <p>To get started with the project I participated in courses on the subject. Also a team formed around the subject and we had regular meetings to discuss and investigate accessibility in our courses.</p>
-          <p>Another accessibility project I took part in was turning our various pdf documents readable by assistive technology. Often this means the starting point is a scanned document so I had to learn how to create accurate machine recognised text, set up labels and reading order. [illustrate with images]</p>
-          <p>Finally I explored accessible svg images. My goal was to convert all graphics if applicable to svg as these support labels and searchable text – both requirements for assistive technologies. [illustrate]</p>
+          <p>My mission is to ensure everybody regardless of their abilities can have the equal level of learning opportunity from our courses. In order to achieve this I need to guarantee that our interactives support a high level of accessibility and can be navigated without a mouse, are not reliant on colour only, and have appropriate labels set up for screen readers. To learn more about accessibility I participated in courses on the subject.</p>
+          <p>Another important accessibility issue I tackled was turning our various pdf documents readable by assistive technology. Often this meant the starting point was scanned book pages without searchable text and thus I learned how to work with character recognition techniques, set up labels and reading order. This is deceiptfully difficult for currently there aren't software and methods readily available for achieving completely accurate results.</p>
+          <p>Finally I explored accessible svg images. My goal was to convert all graphics if applicable to svg as these support aria labels and searchable text – both requirements for assistive technologies.</p>
+          <div class="centre">
+            <object data="img/sample2cleanresponsive.svg" width="700px" height="350px" alt="SVG image with accessible elements."></object>
+          </div>
+          <p class="caption">Example of an SVG graph with searchable text.</p>
         </section>
         <section class="sub-sections">
           <h2>Wordpress</h2>
-          <p>I have created a Wordpress website for in-house usage. The aim of the site is to store various image resources – sort of like a library or collection of bookmarks. To achieve the design I had in mind I made a child theme based on an existing one, meaning I learned how to read and edit php for this project. I also got familiar with using plug-ins as I needed a way for users to add entries without having to make their own posts and accessing the backend. I came up with the idea of using a form to generate posts. [illustrate]</p>
+          <p>I have created a Wordpress website for in-house usage. The aim of the site is to store various image resources – sort of like a library or collection of bookmarks. To achieve the design I had in mind I made a child theme based on an existing one, meaning I learned how to read and edit php for this project. I also got familiar with using plug-ins as I needed a way for users to add entries without having to make their own posts and accessing the backend. I came up with the idea of using a form to generate posts.</p>
+          <div class="centre">
+            <img src="img/wordpress.PNG" height="500px" alt="Screenshot of a Wordpress website.">
+          </div>
+          <p class="caption">Example of a custom Wordpress website I made.</p>
         </section>
       </section>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
