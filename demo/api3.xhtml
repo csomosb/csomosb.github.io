@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>wavesurfer</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900,900italic"/>
+    </head>
+    <body>
+          <style>
+          html {
+            font-family: Lato;
+          }
+          #container {
+            max-width: 900px;
+            margin: 0 auto;
+          }
+          figure {
+            margin: 0 auto;
+          }
+          .waveform-cont {
+            padding: 2rem 2rem 0 2rem;
+          }
+          .waveform-cont audio {
+            margin-top: 2.5rem;
+            max-width: 400px;
+          }
+          .waveform-cont h2 {
+            text-align: left;
+            margin-bottom: 1.2rem;
+          }
+          .waveform-section {
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 0 6px #cecece;
+            margin: 0 auto 5rem auto !important;
+            width: 90%;
+            padding-bottom: 2rem;
+          }
+          .waveform-section button {
+            background: #474747;
+            color: white;
+            border: unset;
+            padding: 0.3rem 0.5rem;
+            font-size: 1rem;
+            margin: 0.25rem auto;
+          }
+          .btn-cont {
+            display: flex;
+            flex-direction: column;
+            line-height: 24px;
+          }
+          .btn-cont p {
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+          }
+          .inline-btn {
+            display: inline-block;
+          }
+          marker span {
+            font-family: Lato !important;
+          }
+          button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+            cursor: pointer;
+          }
+          </style>
+          <div id="container">
+            <!-- javascript libraries for wavesurfer and its markers plugin -->
+            <script src="https://unpkg.com/wavesurfer.js"></script>
+            <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.markers.min.js"></script>
+
+            <!-- javascript library for taking screenshots in browser -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+            <!-- container for waveforms, figure divided into sections of the waveform div and buttons -->
+            <figure>
+              <section class="waveform-section">
+                <div id="waveform-cont" class="waveform-cont">
+                  <h2>Extract 1</h2>
+                </div>
+                <div id="btn-cont" class="btn-cont">
+                  <p>Add a marker at the start of a section of...</p>
+                  <div class="inline-btn">
+                    <button type="button" name="add-btn" onclick="addmarkerProse()" style="width:65px">Prose</button>
+                    <button type="button" name="add-btn" onclick="addmarkerPoetry()" style="width:65px">Poetry</button>
+                  </div>
+                  <div class="inline-btn">
+                    <button type="button" name="clear-btn" onclick="clearmarker()" style="width:120px;margin-left:14px">Clear Markers</button>
+                    <button type="button" name="screen-btn" onclick="takeshot()" style="width:134px" id="screen-btn">Take Screenshot</button>
+                  </div>
+                </div>
+              </section>
+              <section class="waveform-section">
+                <div id="waveform-cont-2" class="waveform-cont">
+                  <h2>Extract 2</h2>
+                </div>
+                <div id="btn-cont-2" class="btn-cont">
+                  <p>Add a marker at the start of a section of...</p>
+                  <div class="inline-btn">
+                    <button type="button" name="add-btn" onclick="addmarkerProse2()" style="width:65px">Prose</button>
+                    <button type="button" name="add-btn" onclick="addmarkerPoetry2()" style="width:65px">Poetry</button>
+                  </div>
+                  <div class="inline-btn">
+                    <button type="button" name="clear-btn" onclick="clearmarker2()" style="width:120px;margin-left:14px">Clear Markers</button>
+                    <button type="button" name="screen-btn" onclick="takeshot2()" style="width:134px" id="screen-btn-2">Take Screenshot</button>
+                  </div>
+                </div>
+              </section>
+              <section class="waveform-section">
+                <div id="waveform-cont-3" class="waveform-cont">
+                  <h2>Extract 3</h2>
+                </div>
+                <div id="btn-cont-3" class="btn-cont">
+                  <p>Add a marker at the start of a section of...</p>
+                  <div class="inline-btn">
+                    <button type="button" name="add-btn" onclick="addmarkerProse3()" style="width:65px">Prose</button>
+                    <button type="button" name="add-btn" onclick="addmarkerPoetry3()" style="width:65px">Poetry</button>
+                  </div>
+                  <div class="inline-btn">
+                    <button type="button" name="clear-btn" onclick="clearmarker3()" style="width:120px;margin-left:14px">Clear Markers</button>
+                    <button type="button" name="screen-btn" onclick="takeshot3()" style="width:134px" id="screen-btn-3">Take Screenshot</button>
+                  </div>
+                </div>
+              </section>
+          </figure>
+
+            <script type="text/javascript">
+            // wavesurfer init
+            var wavesurfer = null;
+            var wavesurfer2 = null;
+            var wavesurfer3 = null;
+
+            // function for clearing all markers, fired with button interaction
+            var clearmarker = function() {
+              wavesurfer.clearMarkers();
+            }
+            var clearmarker2 = function() {
+              wavesurfer2.clearMarkers();
+            }
+            var clearmarker3 = function() {
+              wavesurfer3.clearMarkers();
+            }
+
+            // sets up wavesurfer along with the plugins
+            var prepare = function() {
+              wavesurfer = WaveSurfer.create({
+                container: '#waveform-cont',
+                backend: 'MediaElement',
+                mediaControls: 'true',
+                waveColor: '#f2cece',
+                progressColor: '#C13333',
+                hideScrollbar: true,
+                height: 150,
+                plugins: [
+                    WaveSurfer.markers.create({
+                        markers: []
+                    })
+                  ]
+              });
+              wavesurfer2 = WaveSurfer.create({
+                container: '#waveform-cont-2',
+                backend: 'MediaElement',
+                mediaControls: 'true',
+                waveColor: '#8BBCF8',
+                progressColor: '#06346b',
+                hideScrollbar: true,
+                height: 150,
+                plugins: [
+                    WaveSurfer.markers.create({
+                        markers: []
+                    })
+                  ]
+              });
+              wavesurfer3 = WaveSurfer.create({
+                container: '#waveform-cont-3',
+                backend: 'MediaElement',
+                mediaControls: 'true',
+                waveColor: '#ffdf53',
+                progressColor: '#A38500',
+                hideScrollbar: true,
+                height: 150,
+                plugins: [
+                    WaveSurfer.markers.create({
+                        markers: []
+                    })
+                  ]
+              });
+              // the audio files
+              wavesurfer.load('audio/alexander-nakarada-clear-blue-sky.mp3');
+              wavesurfer2.load('audio/vlad-gluschenko-sky.mp3');
+              wavesurfer3.load('audio/vlad-gluschenko-approaching-summer.mp3');
+            }();
+
+            var svgImg = document.getElementById("svg-img");
+
+            //function below adds a marker at the position of the seeker line
+            var addmarkerProse = function() {
+              // add a new marker
+              wavesurfer.addMarker({
+                color: '#ec325a',
+                label: "Prose",
+                position: "top",
+                draggable: true
+              });
+              // first section of the wave, this is for the playing audio
+              var wave1 = document.getElementsByTagName("wave")[1];
+              // collection of all markers in the first waveform
+              var wave0 = document.getElementsByTagName("wave")[0];
+              var markers1 = wave0.querySelectorAll("marker");
+              // the width of the first wave, it's where the marker should go upon button press
+              var wave1Width = wave1.offsetWidth;
+                // the marker's left side is not its centre but the marker shape's border so that's why the arithmetic is needed
+                wave1Width -= 6;
+                wave1Width = wave1Width + "px";
+                // this is the length of the markers HTMLCollection, to get the last element 1 needs to be substracted
+                lastMarker = markers1.length-1;
+                // the last marker's position is set to offsetWidth-5
+                markers1[lastMarker].style.left=wave1Width;
+              // check if the last placed marker at even or odd position
+              // changes the style of the placed marker accordingly
+            }
+
+            var addmarkerPoetry = function() {
+              wavesurfer.addMarker({
+                color: '#ffb140',
+                label: "Poetry",
+                position: "bottom",
+                draggable: true
+              });
+              var wave1 = document.getElementsByTagName("wave")[1];
+              var wave0 = document.getElementsByTagName("wave")[0];
+              var markers1 = wave0.querySelectorAll("marker");
+              var wave1Width = wave1.offsetWidth;
+                wave1Width -= 6;
+                wave1Width = wave1Width + "px";
+                lastMarker = markers1.length-1;
+                markers1[lastMarker].style.left=wave1Width;
+            }
+
+            //function below adds a marker at the position of the seeker line for the second waveform
+            var addmarkerProse2 = function() {
+              wavesurfer2.addMarker({
+                color: '#ec325a',
+                position: "top",
+                label: "Prose",
+                draggable: true
+              });
+              var wave3 = document.getElementsByTagName("wave")[3];
+              var wave2 = document.getElementsByTagName("wave")[2];
+              var markers2 = wave2.querySelectorAll("marker");
+              var wave3Width = wave3.offsetWidth;
+                wave3Width -= 6;
+                wave3Width = wave3Width + "px";
+                lastMarker = markers2.length-1;
+                markers2[lastMarker].style.left=wave3Width;
+            }
+
+            var addmarkerPoetry2 = function() {
+              wavesurfer2.addMarker({
+                color: '#ffb140',
+                label: "Poetry",
+                position: "bottom",
+                draggable: true
+              });
+              var wave3 = document.getElementsByTagName("wave")[3];
+              var wave2 = document.getElementsByTagName("wave")[2];
+              var markers2 = wave2.querySelectorAll("marker");
+              var wave3Width = wave3.offsetWidth;
+                wave3Width -= 6;
+                wave3Width = wave3Width + "px";
+                lastMarker = markers2.length-1;
+                markers2[lastMarker].style.left=wave3Width;
+            }
+
+            //function below adds a marker at the position of the seeker line for the third waveform
+            var addmarkerProse3 = function() {
+              wavesurfer3.addMarker({
+                color: '#ec325a',
+                position: "top",
+                label: "Prose",
+                draggable: true
+              });
+              var wave5 = document.getElementsByTagName("wave")[5];
+              var wave4 = document.getElementsByTagName("wave")[4];
+              var markers3 = wave4.querySelectorAll("marker");
+              var wave5Width = wave5.offsetWidth;
+                wave5Width -= 6;
+                wave5Width = wave5Width + "px";
+                lastMarker = markers3.length-1;
+                markers3[lastMarker].style.left=wave5Width;
+            }
+
+            var addmarkerPoetry3 = function() {
+              wavesurfer3.addMarker({
+                color: '#ffb140',
+                label: "Poetry",
+                position: "bottom",
+                draggable: true
+              });
+              var wave5 = document.getElementsByTagName("wave")[5];
+              var wave4 = document.getElementsByTagName("wave")[4];
+              var markers3 = wave4.querySelectorAll("marker");
+              var wave5Width = wave5.offsetWidth;
+                wave5Width -= 6;
+                wave5Width = wave5Width + "px";
+                lastMarker = markers3.length-1;
+                markers3[lastMarker].style.left=wave5Width;
+            }
+
+            // fixing the bug in html2canvas that makes svg elements invisible
+            var svgElements = document.body.querySelectorAll('svg');
+            svgElements.forEach(function(item) {
+                item.setAttribute("width", item.getBoundingClientRect().width);
+                item.setAttribute("height", item.getBoundingClientRect().height);
+                item.style.width = null;
+                item.style.height= null;
+            });
+
+            //function for taking screenshots
+            // and for downloading the screenshotted area
+            function takeshot(){
+              const div = document.getElementById("waveform-cont");
+              html2canvas(div).then(
+                function (canvas) {
+                  allowTaint: true;
+                  canvas.style.display = 'none';
+                  document.body.appendChild(canvas);
+                  return canvas;
+                })
+                .then(
+                  function(canvas) {
+                  const image = canvas.toDataURL('image/png');
+                  const a = document.createElement('a');
+                    a.setAttribute('download', 'extract1.png');
+                    a.setAttribute('href', image);
+                    a.click();
+                    canvas.remove();
+                })
+            }
+
+            function takeshot2(){
+              const div = document.getElementById("waveform-cont-2");
+              html2canvas(div).then(
+                function (canvas) {
+                  allowTaint: true;
+                  canvas.style.display = 'none';
+                  document.body.appendChild(canvas);
+                  return canvas;
+                })
+                .then(
+                  function(canvas) {
+                  const image = canvas.toDataURL('image/png');
+                  const a = document.createElement('a');
+                    a.setAttribute('download', 'extract2.png');
+                    a.setAttribute('href', image);
+                    a.click();
+                    canvas.remove();
+                })
+            }
+
+            function takeshot3(){
+              const div = document.getElementById("waveform-cont-3");
+              html2canvas(div).then(
+                function (canvas) {
+                  allowTaint: true;
+                  canvas.style.display = 'none';
+                  document.body.appendChild(canvas);
+                  return canvas;
+                })
+                .then(
+                  function(canvas) {
+                  const image = canvas.toDataURL('image/png');
+                  const a = document.createElement('a');
+                    a.setAttribute('download', 'extract3.png');
+                    a.setAttribute('href', image);
+                    a.click();
+                    canvas.remove();
+                })
+            }
+            </script>
+          </div>
+      </body>
+</html>
