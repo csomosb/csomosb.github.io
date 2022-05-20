@@ -28,6 +28,10 @@ a {
   color: #c83d26;
 }
 
+iframe {
+  border: unset;
+}
+
 #page-content {
   max-width: 50rem;
   margin: 0 auto;
