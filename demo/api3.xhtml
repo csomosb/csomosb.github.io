@@ -18,8 +18,11 @@
           figure {
             margin: 0 auto;
           }
-          .waveform-cont {
+          .waveform-cont-outer {
             padding: 2rem 2rem 0 2rem;
+          }
+          .waveform-cont {
+            max-width: 700px;
           }
           .waveform-cont audio {
             margin-top: 2.5rem;
@@ -75,6 +78,8 @@
             <!-- container for waveforms, figure divided into sections of the waveform div and buttons -->
             <figure>
               <section class="waveform-section">
+                <!-- the outer container is needed because if the inner container has padding settings the waveform will add that into the calculated width and therefore the part inside the padding will be invisible -->
+                <div class="waveform-cont-outer">
                 <div id="waveform-cont" class="waveform-cont">
                   <h2>Extract 1</h2>
                 </div>
@@ -89,8 +94,10 @@
                     <button type="button" name="screen-btn" onclick="takeshot()" style="width:134px" id="screen-btn">Take Screenshot</button>
                   </div>
                 </div>
+              </div>
               </section>
               <section class="waveform-section">
+                <div class="waveform-cont-outer">
                 <div id="waveform-cont-2" class="waveform-cont">
                   <h2>Extract 2</h2>
                 </div>
@@ -105,8 +112,10 @@
                     <button type="button" name="screen-btn" onclick="takeshot2()" style="width:134px" id="screen-btn-2">Take Screenshot</button>
                   </div>
                 </div>
+              </div>
               </section>
               <section class="waveform-section">
+                <div class="waveform-cont-outer">
                 <div id="waveform-cont-3" class="waveform-cont">
                   <h2>Extract 3</h2>
                 </div>
@@ -121,6 +130,7 @@
                     <button type="button" name="screen-btn" onclick="takeshot3()" style="width:134px" id="screen-btn-3">Take Screenshot</button>
                   </div>
                 </div>
+              </div>
               </section>
           </figure>
 
@@ -147,10 +157,12 @@
                 container: '#waveform-cont',
                 backend: 'MediaElement',
                 mediaControls: 'true',
-                waveColor: '#f2cece',
-                progressColor: '#C13333',
+                waveColor: '#FFD1BA',
+                progressColor: '#ff8547',
                 hideScrollbar: true,
                 height: 150,
+                fillParent: true,
+                responsive: true,
                 plugins: [
                     WaveSurfer.markers.create({
                         markers: []
@@ -161,10 +173,12 @@
                 container: '#waveform-cont-2',
                 backend: 'MediaElement',
                 mediaControls: 'true',
-                waveColor: '#8BBCF8',
-                progressColor: '#06346b',
+                waveColor: '#DFF3E3',
+                progressColor: '#6BC77D',
                 hideScrollbar: true,
                 height: 150,
+                fillParent: true,
+                responsive: true,
                 plugins: [
                     WaveSurfer.markers.create({
                         markers: []
@@ -175,10 +189,12 @@
                 container: '#waveform-cont-3',
                 backend: 'MediaElement',
                 mediaControls: 'true',
-                waveColor: '#ffdf53',
-                progressColor: '#A38500',
+                waveColor: '#D8D0F1',
+                progressColor: '#7152cb',
                 hideScrollbar: true,
                 height: 150,
+                fillParent: true,
+                responsive: true,
                 plugins: [
                     WaveSurfer.markers.create({
                         markers: []
@@ -186,9 +202,9 @@
                   ]
               });
               // the audio files
-              wavesurfer.load('audio/alexander-nakarada-clear-blue-sky.mp3');
-              wavesurfer2.load('audio/vlad-gluschenko-sky.mp3');
-              wavesurfer3.load('audio/vlad-gluschenko-approaching-summer.mp3');
+              wavesurfer.load('https://moodlemedia.conted.ox.ac.uk/award/UDCW/prosepoetry/Extract1ParisFrance.mp3');
+              wavesurfer2.load('https://moodlemedia.conted.ox.ac.uk/award/UDCW/prosepoetry/Extract2AliceBToklas.mp3');
+              wavesurfer3.load('https://moodlemedia.conted.ox.ac.uk/award/UDCW/prosepoetry/Extract3FromTenderButtons.mp3');
             }();
 
             var svgImg = document.getElementById("svg-img");
