@@ -75,6 +75,9 @@ img {
   box-shadow: 0 0 2px #cecece;
   padding: 1rem;
 }
+.noborder {
+  box-shadow: unset;
+}
 object {
   width: 700px;
 }
